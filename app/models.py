@@ -2,12 +2,14 @@ from datetime import datetime
 from sqlalchemy import Integer, String, DateTime, Column
 from app.database import Base
 
-class url_items(Base):
-    __tablename__ = 'urls'
+class URLItem(Base):
+    __tablename__ = 'url_items'
 
-    id = Column(Integer, index=True ,primary_key=True)
-    original_url = Column(String , nullable=False)
-    short_code = Column(String , unique=True ,index=True ,nullable=False)
-    creation_at = Column(DateTime, default=datetime.now)
+    id = Column(Integer, primary_key=True, index=True)
+    original_url = Column(String, nullable=False)
+    short_code = Column(String, unique=True, index=True, nullable=False)
     clicks = Column(Integer, default=0)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+
 

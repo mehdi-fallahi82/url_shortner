@@ -1,17 +1,17 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker , declarative_base
 
-data_base_url = "postgresql://postgres:meh1382di@localhost:5432/url_shortner_db"
-
-
+data_base_url = (
+    f"postgresql+psycopg2://postgres:123456@127.0.0.1:5432/url_shortner_db"
+)
 engine = create_engine(data_base_url)
 
 Base = declarative_base()
 
-sessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def get_db():
-    db = sessionLocal()
+    db = SessionLocal()
     try:
         yield db
     finally:
