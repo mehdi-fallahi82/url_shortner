@@ -135,4 +135,3 @@ def redirect_to_original(short_code: str, db: Session = Depends(get_db)):
         url=url_record.original_url,
         status_code=status.HTTP_307_TEMPORARY_REDIRECT,
     )
-#  uvicorn app.main:app --reload --port 8080
